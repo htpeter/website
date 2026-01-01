@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<h1>{{ page.title }}</h1>
+<p class="post-meta">
+  <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+  {% if page.author %} • {{ page.author }}{% endif %}
+</p>
+
+<section>
+  {{ content }}
+</section>
+
+{% if page.next or page.previous %}
+<hr>
+<nav>
+  {% if page.previous %}
+    <span style="float: left;">← <a href="{{ page.previous.url | relative_url }}">{{ page.previous.title }}</a></span>
+  {% endif %}
+  {% if page.next %}
+    <span style="float: right;"><a href="{{ page.next.url | relative_url }}">{{ page.next.title }}</a> →</span>
+  {% endif %}
+</nav>
+{% endif %}
